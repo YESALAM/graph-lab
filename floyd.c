@@ -18,7 +18,7 @@ int dist[size][size];
 
 
 int main(){
-		
+
 	int g[size][size] = {{0, 4, 0, 0, 0, 0, 0, 8, 0},
                       {4, 0, 8, 0, 0, 0, 0, 11, 0},
                       {0, 8, 0, 7, 0, 4, 0, 0, 2},
@@ -36,8 +36,8 @@ int main(){
 		    dist[i][j] = max ;
 		}
     	}
-	
-	//readFileandMakeGraph(g);	
+
+	//readFileandMakeGraph(g);
 	floyd(g,dist);
 	printSolution(dist);
 	c_time = clock()-c_time;
@@ -57,9 +57,9 @@ void floyd(int g[size][size],int dist[size][size]){
             dist[i][j] = g[i][j] ;
         }
     }
-	
-	
-	
+
+
+
     for(int k=start;k<size;k++){
         for(int i=start;i<size;i++){
             for(int j=start;j<size;j++){
@@ -74,11 +74,11 @@ void floyd(int g[size][size],int dist[size][size]){
             }
         }
     }
-		
+
 }
 
 void readFileandMakeGraph(int graph[size][size]){
-	
+
 	FILE* file_pt = fopen("soc-sign-bitcoinotc.csv","r");
 	char line[1024];
 	while(fgets(line,1024,file_pt)){
@@ -92,12 +92,13 @@ void readFileandMakeGraph(int graph[size][size]){
 		source_c = tok ;
 		dest_c = strtok(NULL,",");
 		weight_c = strtok(NULL,",");
-		
-		
+
+
 		int source = atoi(source_c);
 		int dest = atoi(dest_c);
 		int weight = atoi(weight_c);
 		graph[source][dest] = weight ;
+		free(tmp);
 	}
 }
 
@@ -107,7 +108,7 @@ void readFileandMakeGraph(int graph[size][size]){
 
 int printSolution(int dist[size][size])
 {
-   printf("NodeId   MinmumRating\n");
+
    for (int i = start; i < size; i++){
       for(int j=start;j<size;j++){
 	printf("%d \t",dist[i][j]);

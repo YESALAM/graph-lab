@@ -35,14 +35,10 @@ int main()
 		printf("\t");
 		tok = strtok(NULL,",");
 		printf(tok);
-		
+
 	}
 	printf("\n");
-	//getfield2(tmp,get);
 
-	
-        //printf("%s\t%s\t%s\n", ,getfield(tmp,1),getfield(tmp,2));
-        // NOTE strtok clobbers tmp
         free(tmp);
     }
 }

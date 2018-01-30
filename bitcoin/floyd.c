@@ -17,8 +17,8 @@ int g[size][size];
 int dist[size][size];
 
 
-int main(){		
-	
+int main(){
+
 	clock_t c_time ;
 	c_time = clock();
 	for(int i=0;i<size;i++){
@@ -27,10 +27,10 @@ int main(){
 		    dist[i][j] = max ;
 		}
     	}
-	
-	readFileandMakeGraph(g);	
+
+	readFileandMakeGraph(g);
 	floyd(g,dist);
-	//printSolution(dist);
+
 	c_time = clock()-c_time;
 	double time_taken = ((double)c_time)/CLOCKS_PER_SEC;
 	printf("Time taken is %f\n",time_taken);
@@ -48,9 +48,9 @@ void floyd(int g[size][size],int dist[size][size]){
             dist[i][j] = g[i][j] ;
         }
     }
-	
-	
-	
+
+
+
     for(int k=start;k<size;k++){
         for(int i=start;i<size;i++){
             for(int j=start;j<size;j++){
@@ -62,14 +62,16 @@ void floyd(int g[size][size],int dist[size][size]){
                     }
                     dist[i][j] = temp ;
                 }
+                printf("\r K loop %d I loop %d J loop %d",k,i,j);
+                fflush(stdout);
             }
         }
     }
-		
+
 }
 
 void readFileandMakeGraph(int graph[size][size]){
-	
+
 	FILE* file_pt = fopen("soc-sign-bitcoinotc.csv","r");
 	char line[1024];
 	while(fgets(line,1024,file_pt)){
@@ -83,12 +85,13 @@ void readFileandMakeGraph(int graph[size][size]){
 		source_c = tok ;
 		dest_c = strtok(NULL,",");
 		weight_c = strtok(NULL,",");
-		
-		
+
+
 		int source = atoi(source_c);
 		int dest = atoi(dest_c);
 		int weight = abs(atoi(weight_c));
 		graph[source][dest] = weight ;
+		free(temp);
 	}
 }
 
