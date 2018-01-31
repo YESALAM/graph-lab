@@ -4,7 +4,7 @@
 #include<time.h>
 
 
-#define size 27
+#define size 18
 #define start 1
 #define max 65536
 
@@ -31,7 +31,7 @@ int main(){
 	readFileandMakeGraph(g);
 	floyd(g,dist);
 
-    printSolution(dist);
+    	printSolution(dist);
 
 	c_time = clock()-c_time;
 	double time_taken = ((double)c_time)/CLOCKS_PER_SEC;
@@ -74,7 +74,7 @@ void floyd(int g[size][size],int dist[size][size]){
 
 void readFileandMakeGraph(int graph[size][size]){
 
-	FILE* file_pt = fopen("out.moreno_bison_bison","r");
+	FILE* file_pt = fopen("out.moreno_kangaroo_kangaroo","r");
 	char line[1024];
 	while(fgets(line,1024,file_pt)){
         if(line[0] == '%') continue ;

@@ -4,7 +4,7 @@
 #include<time.h>
 
 
-#define size 27
+#define size 18
 #define start 1
 #define max 65536
 
@@ -74,7 +74,7 @@ void floyd(int g[size][size],int dist[size][size]){
 
 void readFileandMakeGraph(int graph[size][size]){
 
-	FILE* file_pt = fopen("out.moreno_bison_bison","r");
+	FILE* file_pt = fopen("out.moreno_kangaroo_kangaroo","r");
 	char line[1024];
 	while(fgets(line,1024,file_pt)){
         if(line[0] == '%') continue ;
@@ -94,6 +94,7 @@ void readFileandMakeGraph(int graph[size][size]){
 		int dest = atoi(dest_c);
 		int weight = abs(atoi(weight_c));
 		graph[source][dest] = weight ;
+		graph[dest][source] = weight;
 	}
 }
 
@@ -103,7 +104,7 @@ void readFileandMakeGraph(int graph[size][size]){
 
 int printSolution(int dist[size][size])
 {
-   printf("NodeId   Minimum_Weight_Sum\n");
+  
    for (int i = start; i < size; i++){
       for(int j=start;j<size;j++){
 	printf("%d \t",dist[i][j]);
