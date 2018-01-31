@@ -9,7 +9,7 @@
 #define start 1
 
 int mindist(int distance[],int visited[]);
-int printSolution(int dist[]);
+int printSolution(int dist[],int path[]);
 void readFileandReturnGraph(int* graph);
 
 
@@ -31,7 +31,7 @@ int main(){
 	return 0;
 }
 
-void dijkstra(int g[size][size],int dist[size],int path,int visited[size]){
+void dijkstra(int g[size][size],int dist[size],int path[],int visited[size]){
 
 	for(int i=0;i<size;i++){
 		dist[i] = INT_MAX ;
